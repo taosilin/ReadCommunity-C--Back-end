@@ -1,0 +1,505 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="bookModel1.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="8.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="book_info">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="book_name" Type="varchar" MaxLength="200" />
+          <Property Name="author" Type="varchar" MaxLength="100" />
+          <Property Name="publisher" Type="varchar" MaxLength="200" />
+          <Property Name="translator" Type="varchar" MaxLength="100" />
+          <Property Name="publish_date" Type="varchar" MaxLength="100" />
+          <Property Name="page_num" Type="int" />
+          <Property Name="isbn" Type="varchar" MaxLength="20" />
+          <Property Name="score" Type="float" />
+          <Property Name="rating_num" Type="int" />
+          <Property Name="book_image" Type="varchar" MaxLength="100" />
+          <Property Name="introduction" Type="longtext" />
+          <Property Name="tags" Type="varchar" MaxLength="200" />
+          <Property Name="author_info" Type="longtext" />
+          <Property Name="producer" Type="varchar" MaxLength="45" />
+          <Property Name="original_name" Type="varchar" MaxLength="200" />
+          <Property Name="binding" Type="varchar" MaxLength="45" />
+          <Property Name="subtitle" Type="varchar" MaxLength="100" />
+          <Property Name="series" Type="varchar" MaxLength="45" />
+          <Property Name="star1" Type="float" />
+          <Property Name="star2" Type="float" />
+          <Property Name="star3" Type="float" />
+          <Property Name="star4" Type="float" />
+          <Property Name="star5" Type="float" />
+        </EntityType>
+        <EntityType Name="comment">
+          <Key>
+            <PropertyRef Name="commentid" />
+          </Key>
+          <Property Name="commentid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bookid" Type="int" />
+          <Property Name="username" Type="varchar" MaxLength="45" />
+          <Property Name="content" Type="mediumtext" />
+          <Property Name="commenttime" Type="datetime" Precision="0" />
+        </EntityType>
+        <EntityType Name="score">
+          <Key>
+            <PropertyRef Name="username" />
+            <PropertyRef Name="bookid" />
+          </Key>
+          <Property Name="username" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="bookid" Type="int" Nullable="false" />
+          <Property Name="score" Type="int" />
+        </EntityType>
+        <EntityType Name="tag_info">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="page" Type="smallint" Nullable="false" />
+          <Property Name="is_end" Type="bool" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="username" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="45" />
+          <Property Name="nickname" Type="varchar" MaxLength="45" />
+          <Property Name="gender" Type="varchar" MaxLength="1" />
+          <Property Name="birthday" Type="date" />
+          <Property Name="introduction" Type="mediumtext" />
+          <Property Name="headShot" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="user_book">
+          <Key>
+            <PropertyRef Name="username" />
+            <PropertyRef Name="bookid" />
+            <PropertyRef Name="type" />
+          </Key>
+          <Property Name="username" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="bookid" Type="int" Nullable="false" />
+          <Property Name="type" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="time" Type="datetime" Precision="0" />
+        </EntityType>
+        <Association Name="bookid1">
+          <End Role="book_info" Type="Self.book_info" Multiplicity="0..1" />
+          <End Role="comment" Type="Self.comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="book_info">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comment">
+              <PropertyRef Name="bookid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="bookid2">
+          <End Role="book_info" Type="Self.book_info" Multiplicity="1" />
+          <End Role="score" Type="Self.score" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="book_info">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="score">
+              <PropertyRef Name="bookid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="bookid3">
+          <End Role="book_info" Type="Self.book_info" Multiplicity="1" />
+          <End Role="user_book" Type="Self.user_book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="book_info">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user_book">
+              <PropertyRef Name="bookid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="username1">
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
+          <End Role="comment" Type="Self.comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="username" />
+            </Principal>
+            <Dependent Role="comment">
+              <PropertyRef Name="username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="username2">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="score" Type="Self.score" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="username" />
+            </Principal>
+            <Dependent Role="score">
+              <PropertyRef Name="username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="username3">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="user_book" Type="Self.user_book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="username" />
+            </Principal>
+            <Dependent Role="user_book">
+              <PropertyRef Name="username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="bookModel1StoreContainer">
+          <EntitySet Name="book_info" EntityType="Self.book_info" Schema="book" store:Type="Tables" />
+          <EntitySet Name="comment" EntityType="Self.comment" Schema="book" store:Type="Tables" />
+          <EntitySet Name="score" EntityType="Self.score" Schema="book" store:Type="Tables" />
+          <EntitySet Name="tag_info" EntityType="Self.tag_info" Schema="book" store:Type="Tables" />
+          <EntitySet Name="user" EntityType="Self.user" Schema="book" store:Type="Tables" />
+          <EntitySet Name="user_book" EntityType="Self.user_book" Schema="book" store:Type="Tables" />
+          <AssociationSet Name="bookid1" Association="Self.bookid1">
+            <End Role="book_info" EntitySet="book_info" />
+            <End Role="comment" EntitySet="comment" />
+          </AssociationSet>
+          <AssociationSet Name="bookid2" Association="Self.bookid2">
+            <End Role="book_info" EntitySet="book_info" />
+            <End Role="score" EntitySet="score" />
+          </AssociationSet>
+          <AssociationSet Name="bookid3" Association="Self.bookid3">
+            <End Role="book_info" EntitySet="book_info" />
+            <End Role="user_book" EntitySet="user_book" />
+          </AssociationSet>
+          <AssociationSet Name="username1" Association="Self.username1">
+            <End Role="user" EntitySet="user" />
+            <End Role="comment" EntitySet="comment" />
+          </AssociationSet>
+          <AssociationSet Name="username2" Association="Self.username2">
+            <End Role="user" EntitySet="user" />
+            <End Role="score" EntitySet="score" />
+          </AssociationSet>
+          <AssociationSet Name="username3" Association="Self.username3">
+            <End Role="user" EntitySet="user" />
+            <End Role="user_book" EntitySet="user_book" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="bookModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="book_info">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="book_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="author" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="publisher" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="translator" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="publish_date" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="page_num" Type="Int32" />
+          <Property Name="isbn" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="score" Type="Single" />
+          <Property Name="rating_num" Type="Int32" />
+          <Property Name="book_image" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="introduction" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="tags" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="author_info" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="producer" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="original_name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="binding" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="subtitle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="series" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="star1" Type="Single" />
+          <Property Name="star2" Type="Single" />
+          <Property Name="star3" Type="Single" />
+          <Property Name="star4" Type="Single" />
+          <Property Name="star5" Type="Single" />
+          <NavigationProperty Name="comment" Relationship="Self.bookid1" FromRole="book_info" ToRole="comment" />
+          <NavigationProperty Name="score1" Relationship="Self.bookid2" FromRole="book_info" ToRole="score" />
+          <NavigationProperty Name="user_book" Relationship="Self.bookid3" FromRole="book_info" ToRole="user_book" />
+        </EntityType>
+        <EntityType Name="comment">
+          <Key>
+            <PropertyRef Name="commentid" />
+          </Key>
+          <Property Name="commentid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bookid" Type="Int32" />
+          <Property Name="username" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="content" Type="String" MaxLength="16777215" FixedLength="false" Unicode="false" />
+          <Property Name="commenttime" Type="DateTime" />
+          <NavigationProperty Name="book_info" Relationship="Self.bookid1" FromRole="comment" ToRole="book_info" />
+          <NavigationProperty Name="user" Relationship="Self.username1" FromRole="comment" ToRole="user" />
+        </EntityType>
+        <EntityType Name="score">
+          <Key>
+            <PropertyRef Name="username" />
+            <PropertyRef Name="bookid" />
+          </Key>
+          <Property Name="username" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="bookid" Type="Int32" Nullable="false" />
+          <Property Name="score1" Type="Int32" />
+          <NavigationProperty Name="book_info" Relationship="Self.bookid2" FromRole="score" ToRole="book_info" />
+          <NavigationProperty Name="user" Relationship="Self.username2" FromRole="score" ToRole="user" />
+        </EntityType>
+        <EntityType Name="tag_info">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="page" Type="Int16" Nullable="false" />
+          <Property Name="is_end" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="username" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="nickname" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="gender" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="birthday" Type="DateTime" />
+          <Property Name="introduction" Type="String" MaxLength="16777215" FixedLength="false" Unicode="false" />
+          <Property Name="headShot" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="comment" Relationship="Self.username1" FromRole="user" ToRole="comment" />
+          <NavigationProperty Name="score" Relationship="Self.username2" FromRole="user" ToRole="score" />
+          <NavigationProperty Name="user_book" Relationship="Self.username3" FromRole="user" ToRole="user_book" />
+        </EntityType>
+        <EntityType Name="user_book">
+          <Key>
+            <PropertyRef Name="username" />
+            <PropertyRef Name="bookid" />
+            <PropertyRef Name="type" />
+          </Key>
+          <Property Name="username" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="bookid" Type="Int32" Nullable="false" />
+          <Property Name="type" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="time" Type="DateTime" />
+          <NavigationProperty Name="book_info" Relationship="Self.bookid3" FromRole="user_book" ToRole="book_info" />
+          <NavigationProperty Name="user" Relationship="Self.username3" FromRole="user_book" ToRole="user" />
+        </EntityType>
+        <Association Name="bookid1">
+          <End Role="book_info" Type="Self.book_info" Multiplicity="0..1" />
+          <End Role="comment" Type="Self.comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="book_info">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="comment">
+              <PropertyRef Name="bookid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="bookid2">
+          <End Role="book_info" Type="Self.book_info" Multiplicity="1" />
+          <End Role="score" Type="Self.score" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="book_info">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="score">
+              <PropertyRef Name="bookid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="bookid3">
+          <End Role="book_info" Type="Self.book_info" Multiplicity="1" />
+          <End Role="user_book" Type="Self.user_book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="book_info">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="user_book">
+              <PropertyRef Name="bookid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="username1">
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
+          <End Role="comment" Type="Self.comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="username" />
+            </Principal>
+            <Dependent Role="comment">
+              <PropertyRef Name="username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="username2">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="score" Type="Self.score" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="username" />
+            </Principal>
+            <Dependent Role="score">
+              <PropertyRef Name="username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="username3">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="user_book" Type="Self.user_book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="username" />
+            </Principal>
+            <Dependent Role="user_book">
+              <PropertyRef Name="username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="bookEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="book_info" EntityType="Self.book_info" />
+          <EntitySet Name="comment" EntityType="Self.comment" />
+          <EntitySet Name="score" EntityType="Self.score" />
+          <EntitySet Name="tag_info" EntityType="Self.tag_info" />
+          <EntitySet Name="user" EntityType="Self.user" />
+          <EntitySet Name="user_book" EntityType="Self.user_book" />
+          <AssociationSet Name="bookid1" Association="Self.bookid1">
+            <End Role="book_info" EntitySet="book_info" />
+            <End Role="comment" EntitySet="comment" />
+          </AssociationSet>
+          <AssociationSet Name="bookid2" Association="Self.bookid2">
+            <End Role="book_info" EntitySet="book_info" />
+            <End Role="score" EntitySet="score" />
+          </AssociationSet>
+          <AssociationSet Name="bookid3" Association="Self.bookid3">
+            <End Role="book_info" EntitySet="book_info" />
+            <End Role="user_book" EntitySet="user_book" />
+          </AssociationSet>
+          <AssociationSet Name="username1" Association="Self.username1">
+            <End Role="user" EntitySet="user" />
+            <End Role="comment" EntitySet="comment" />
+          </AssociationSet>
+          <AssociationSet Name="username2" Association="Self.username2">
+            <End Role="user" EntitySet="user" />
+            <End Role="score" EntitySet="score" />
+          </AssociationSet>
+          <AssociationSet Name="username3" Association="Self.username3">
+            <End Role="user" EntitySet="user" />
+            <End Role="user_book" EntitySet="user_book" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="bookModel1StoreContainer" CdmEntityContainer="bookEntities1">
+          <EntitySetMapping Name="book_info">
+            <EntityTypeMapping TypeName="bookModel1.book_info">
+              <MappingFragment StoreEntitySet="book_info">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="book_name" ColumnName="book_name" />
+                <ScalarProperty Name="author" ColumnName="author" />
+                <ScalarProperty Name="publisher" ColumnName="publisher" />
+                <ScalarProperty Name="translator" ColumnName="translator" />
+                <ScalarProperty Name="publish_date" ColumnName="publish_date" />
+                <ScalarProperty Name="page_num" ColumnName="page_num" />
+                <ScalarProperty Name="isbn" ColumnName="isbn" />
+                <ScalarProperty Name="score" ColumnName="score" />
+                <ScalarProperty Name="rating_num" ColumnName="rating_num" />
+                <ScalarProperty Name="book_image" ColumnName="book_image" />
+                <ScalarProperty Name="introduction" ColumnName="introduction" />
+                <ScalarProperty Name="tags" ColumnName="tags" />
+                <ScalarProperty Name="author_info" ColumnName="author_info" />
+                <ScalarProperty Name="producer" ColumnName="producer" />
+                <ScalarProperty Name="original_name" ColumnName="original_name" />
+                <ScalarProperty Name="binding" ColumnName="binding" />
+                <ScalarProperty Name="subtitle" ColumnName="subtitle" />
+                <ScalarProperty Name="series" ColumnName="series" />
+                <ScalarProperty Name="star1" ColumnName="star1" />
+                <ScalarProperty Name="star2" ColumnName="star2" />
+                <ScalarProperty Name="star3" ColumnName="star3" />
+                <ScalarProperty Name="star4" ColumnName="star4" />
+                <ScalarProperty Name="star5" ColumnName="star5" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="comment">
+            <EntityTypeMapping TypeName="bookModel1.comment">
+              <MappingFragment StoreEntitySet="comment">
+                <ScalarProperty Name="commentid" ColumnName="commentid" />
+                <ScalarProperty Name="bookid" ColumnName="bookid" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="commenttime" ColumnName="commenttime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="score">
+            <EntityTypeMapping TypeName="bookModel1.score">
+              <MappingFragment StoreEntitySet="score">
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="bookid" ColumnName="bookid" />
+                <ScalarProperty Name="score1" ColumnName="score" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tag_info">
+            <EntityTypeMapping TypeName="bookModel1.tag_info">
+              <MappingFragment StoreEntitySet="tag_info">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="page" ColumnName="page" />
+                <ScalarProperty Name="is_end" ColumnName="is_end" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user">
+            <EntityTypeMapping TypeName="bookModel1.user">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="nickname" ColumnName="nickname" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="birthday" ColumnName="birthday" />
+                <ScalarProperty Name="introduction" ColumnName="introduction" />
+                <ScalarProperty Name="headShot" ColumnName="headShot" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_book">
+            <EntityTypeMapping TypeName="bookModel1.user_book">
+              <MappingFragment StoreEntitySet="user_book">
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="bookid" ColumnName="bookid" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="time" ColumnName="time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

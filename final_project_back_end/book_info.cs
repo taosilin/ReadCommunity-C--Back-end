@@ -12,7 +12,6 @@ namespace final_project_back_end
     using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
-
     public partial class book_info
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -47,8 +46,7 @@ namespace final_project_back_end
         public Nullable<float> star3 { get; set; }
         public Nullable<float> star4 { get; set; }
         public Nullable<float> star5 { get; set; }
-
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         [JsonIgnore]
         public virtual ICollection<comment> comment { get; set; }

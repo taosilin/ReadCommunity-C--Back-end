@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="129ab8ace75d4be58fcadd590a11c906" Name="Diagram1">
+        <EntityTypeShape EntityType="bookModel1.book_info" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="bookModel1.comment" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="bookModel1.score" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="bookModel1.tag_info" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="bookModel1.user" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="bookModel1.user_book" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
+        <AssociationConnector Association="bookModel1.bookid1" ManuallyRouted="false" />
+        <AssociationConnector Association="bookModel1.bookid2" ManuallyRouted="false" />
+        <AssociationConnector Association="bookModel1.bookid3" ManuallyRouted="false" />
+        <AssociationConnector Association="bookModel1.username1" ManuallyRouted="false" />
+        <AssociationConnector Association="bookModel1.username2" ManuallyRouted="false" />
+        <AssociationConnector Association="bookModel1.username3" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

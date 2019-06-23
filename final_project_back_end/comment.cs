@@ -11,14 +11,18 @@ namespace final_project_back_end
 {
     using System;
     using System.Collections.Generic;
-    
+    using Newtonsoft.Json;
     public partial class comment
     {
         public int commentid { get; set; }
+        public Nullable<int> bookid { get; set; }
+        public string username { get; set; }
         public string content { get; set; }
         public Nullable<System.DateTime> commenttime { get; set; }
-    
+
+        [JsonIgnore]
         public virtual book_info book_info { get; set; }
+        [JsonIgnore]
         public virtual user user { get; set; }
     }
 }

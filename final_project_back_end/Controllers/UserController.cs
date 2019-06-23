@@ -17,9 +17,11 @@ namespace final_project_back_end.Controllers
         private bookEntities db = new bookEntities();
 
         // GET: api/User
-        public IQueryable<user> Getuser()
+        public IHttpActionResult Getuser()
         {
-            return db.user;
+            bookEntities ctx = new bookEntities();
+            var users = from u in ctx.user select new { u.username,u.password};
+            return Json(users);
         }
 
         // GET: api/User/5
