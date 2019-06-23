@@ -20,7 +20,7 @@ namespace final_project_back_end.Controllers
         }
 
         // GET api/values/5
-        public string Get(int id)
+        public IHttpActionResult Get(int id)
         {
             try
             {
@@ -29,17 +29,14 @@ namespace final_project_back_end.Controllers
                         "Data Source=106.13.75.89;Initial Catalog=book;Integrated Security=True;User Id=root;Password=769647273");
                 con.Open();
                 MySqlCommand sql = new MySqlCommand("select * from user",con);
-                // MySqlDataReader dr = sql.ExecuteReader();
                 MySqlDataAdapter sda = new MySqlDataAdapter(sql);
                 DataSet dt = new DataSet();
                 sda.Fill(dt);
-                // dr.Close();
-                // con.Close();
-                return JsonConvert.SerializeObject(dt);
+                return Json(dt);
             }
             catch (Exception ex)
             {
-                return ex.ToString();
+                return Json<string>("error");
             }
 
         }
