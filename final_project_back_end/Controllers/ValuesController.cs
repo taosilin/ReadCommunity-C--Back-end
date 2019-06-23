@@ -14,9 +14,11 @@ namespace final_project_back_end.Controllers
     public class ValuesController : ApiController
     {
         // GET api/values
-        public IEnumerable<string> Get()
+        public IHttpActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            bookEntities ctx = new bookEntities();
+            var query = from u in ctx.user select new { u.username, u.password };
+            return Json(query);
         }
 
         // GET api/values/5

@@ -10,7 +10,7 @@ namespace final_project_back_end
         public static void Register(HttpConfiguration config)
         {
             // Web API 配置和服务
-
+            config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
             // Web API 路由
             config.MapHttpAttributeRoutes();
 
@@ -19,7 +19,7 @@ namespace final_project_back_end
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
-           
+            
         }
     }
 }
