@@ -17,24 +17,23 @@ namespace final_project_back_end.Controllers
         private bookEntities db = new bookEntities();
 
         // GET: api/User
-        public IHttpActionResult Getuser()
+        public IQueryable<user> Getuser()
         {
-            bookEntities ctx = new bookEntities();
-            var users = from u in ctx.user select new { u.username,u.password};
-            return Json(users);
+            return db.user;
         }
 
         // GET: api/User/5
         [ResponseType(typeof(user))]
-        public IHttpActionResult Getuser(string id)
+        public IHttpActionResult Getuser(string username)
         {
-            user user = db.user.Find(id);
+            bookEntities1 ctx = new bookEntities1();
+            var user = ctx.user.Where(x => x.username == username);
             if (user == null)
             {
                 return NotFound();
             }
 
-            return Ok(user);
+            return Json(user);
         }
 
         // PUT: api/User/5

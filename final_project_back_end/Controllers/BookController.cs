@@ -25,7 +25,7 @@ namespace final_project_back_end.Controllers
         // GET: api/Book/5
         public IHttpActionResult Getbook_info(int id)
         {
-            bookEntities ctx = new bookEntities();
+            bookEntities1 ctx = new bookEntities1();
             var book_info = ctx.book_info.Where(x => x.id == id);
             if (book_info == null)
             {

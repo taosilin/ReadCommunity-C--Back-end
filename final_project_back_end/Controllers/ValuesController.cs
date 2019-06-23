@@ -16,31 +16,13 @@ namespace final_project_back_end.Controllers
         // GET api/values
         public IHttpActionResult Get()
         {
-            bookEntities ctx = new bookEntities();
-            var query = from u in ctx.user select new { u.username, u.password };
-            return Json(query);
+            return Json("get");
         }
 
         // GET api/values/5
         public IHttpActionResult Get(int id)
         {
-            try
-            {
-                MySqlConnection con =
-                    new MySqlConnection(
-                        "Data Source=106.13.75.89;Initial Catalog=book;Integrated Security=True;User Id=root;Password=769647273");
-                con.Open();
-                MySqlCommand sql = new MySqlCommand("select * from user",con);
-                MySqlDataAdapter sda = new MySqlDataAdapter(sql);
-                DataSet dt = new DataSet();
-                sda.Fill(dt);
-                return Json(dt);
-            }
-            catch (Exception ex)
-            {
-                return Json<string>("error");
-            }
-
+            return Json("get/id");
         }
 
         // POST api/values
