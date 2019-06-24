@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
-
+using System.Web.Http.Cors;
 namespace final_project_back_end
 {
     public static class WebApiConfig
@@ -19,7 +19,11 @@ namespace final_project_back_end
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
-            
+
+            //跨域
+            var cors = new EnableCorsAttribute("http://localhost:51324", "*", "*");
+            config.EnableCors(cors);
+            config.EnableCors();
         }
     }
 }

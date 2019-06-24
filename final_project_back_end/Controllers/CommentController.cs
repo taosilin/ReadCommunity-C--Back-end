@@ -12,14 +12,26 @@ using final_project_back_end;
 
 namespace final_project_back_end.Controllers
 {
+    public class Username
+    {
+        public string username { get; set; }
+    }
+
     public class CommentController : ApiController
     {
         private bookEntities1 db = new bookEntities1();
 
         // GET: api/Comment
-        public IQueryable<comment> Getcomment()
+        public IHttpActionResult GetUsercomment(Username user)
         {
-            return db.comment;
+            bookEntities ctx = new bookEntities();
+            var comments = ctx.comment.Where(x => x.user.username == user.username);
+            if (comments == null)
+            {
+                return NotFound();
+            }
+
+            return Json(comments);
         }
 
         // GET: api/Comment/5      
@@ -35,17 +47,7 @@ namespace final_project_back_end.Controllers
             return Json(comments);
         }
 
-        public IHttpActionResult GetUsercomment(string username)
-        {
-            bookEntities1 ctx = new bookEntities1();
-            var comments = ctx.comment.Where(x => x.user.username == username);
-            if (comments == null)
-            {
-                return NotFound();
-            }
-
-            return Json(comments);
-        }
+       
 
         // PUT: api/Comment/5
         [ResponseType(typeof(void))]

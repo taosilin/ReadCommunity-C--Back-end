@@ -36,7 +36,6 @@ namespace final_project_back_end.Controllers
         }
 
         // PUT: api/User/5
-        [ResponseType(typeof(void))]
         public IHttpActionResult Putuser(string id, user user)
         {
             if (!ModelState.IsValid)
@@ -67,11 +66,10 @@ namespace final_project_back_end.Controllers
                 }
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return Json("success");
         }
 
         // POST: api/User
-        [ResponseType(typeof(user))]
         public IHttpActionResult Postuser(user user)
         {
             if (!ModelState.IsValid)
@@ -89,7 +87,7 @@ namespace final_project_back_end.Controllers
             {
                 if (userExists(user.username))
                 {
-                    return Conflict();
+                    return Json("error");
                 }
                 else
                 {
@@ -97,7 +95,7 @@ namespace final_project_back_end.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = user.username }, user);
+            return Json("success");
         }
 
         // DELETE: api/User/5

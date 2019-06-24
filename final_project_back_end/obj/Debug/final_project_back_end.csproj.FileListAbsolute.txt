@@ -205,3 +205,7 @@ C:\Users\taosi\Documents\GitHub\ReadCommunity-C--Back-end\final_project_back_end
 C:\Users\taosi\Documents\GitHub\ReadCommunity-C--Back-end\final_project_back_end\obj\Debug\final_project_back_end.dll
 C:\Users\taosi\Documents\GitHub\ReadCommunity-C--Back-end\final_project_back_end\obj\Debug\final_project_back_end.pdb
 C:\Users\taosi\Documents\GitHub\ReadCommunity-C--Back-end\final_project_back_end\bin\zh-Hans\EntityFramework.resources.dll
+C:\Users\taosi\Documents\GitHub\ReadCommunity-C--Back-end\final_project_back_end\bin\System.Web.Cors.dll
+C:\Users\taosi\Documents\GitHub\ReadCommunity-C--Back-end\final_project_back_end\bin\System.Web.Http.Cors.dll
+C:\Users\taosi\Documents\GitHub\ReadCommunity-C--Back-end\final_project_back_end\bin\System.Web.Http.Cors.xml
+C:\Users\taosi\Documents\GitHub\ReadCommunity-C--Back-end\final_project_back_end\bin\zh-Hans\EntityFramework.SqlServer.resources.dll

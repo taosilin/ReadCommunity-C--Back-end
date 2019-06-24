@@ -59,30 +59,14 @@ namespace final_project_back_end.Controllers
             return Json<List<book_info>>(book_info);
         }
 
+
         [Route("BookList/searchName")]
         [HttpPost]
-        public IHttpActionResult SearchName(SearchBook searchBook)
+        public IHttpActionResult SearchBook(SearchBook searchBook)
         {
             bookEntities1 ctx = new bookEntities1();
 
-            var book_info = (from b in ctx.book_info where b.book_name.Contains(searchBook.name) select b)
-                .OrderByDescending(x => x.score).Skip(searchBook.page * searchBook.size).Take(searchBook.size).ToList();
-
-            if (book_info == null)
-            {
-                return NotFound();
-            }
-
-            return Json<List<book_info>>(book_info);
-        }
-
-        [Route("BookList/searchAuthor")]
-        [HttpPost]
-        public IHttpActionResult SearchAuthor(SearchBook searchBook)
-        {
-            bookEntities1 ctx = new bookEntities1();
-
-            var book_info = (from b in ctx.book_info where b.author.Contains(searchBook.name) select b)
+            var book_info = (from b in ctx.book_info where ((b.author.Contains(searchBook.name))||(b.book_name.Contains(searchBook.name))) select b)
                 .OrderByDescending(x => x.score).Skip(searchBook.page * searchBook.size).Take(searchBook.size).ToList();
 
             if (book_info == null)

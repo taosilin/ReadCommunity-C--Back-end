@@ -11,14 +11,16 @@ namespace final_project_back_end
 {
     using System;
     using System.Collections.Generic;
-    
+    using Newtonsoft.Json;
     public partial class score
     {
         public string username { get; set; }
         public int bookid { get; set; }
         public Nullable<int> score1 { get; set; }
-    
+
+        [JsonIgnore]
         public virtual book_info book_info { get; set; }
+        [JsonIgnore]
         public virtual user user { get; set; }
     }
 }
