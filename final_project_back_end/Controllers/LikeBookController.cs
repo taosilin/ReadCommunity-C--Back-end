@@ -11,6 +11,7 @@ using System.Web.Http.Description;
 
 namespace final_project_back_end.Controllers
 {
+    [Route("LikeBook")]
     public class LikeBookController : ApiController
     {
         private bookEntities1 db = new bookEntities1();
@@ -21,21 +22,20 @@ namespace final_project_back_end.Controllers
             public string type { get; set; }
         }
 
-        // GET: api/LikeBook/5
-        [HttpGet]
-        [ResponseType(typeof(user_book))]
+        [Route("LikeBook/List")]
+        [HttpPost]
         public IHttpActionResult Getuser_book(LikeBook likeBook)
         {
             //user_book user_book = db.user_book.Find(id);
             bookEntities1 ctx = new bookEntities1();
             var like_book = ctx.user_book.Where(x => x.username == likeBook.username && x.type == likeBook.type);
-
-            if (like_book == null)
+            var result = (from u in ctx.user_book join b in ctx.book_info on u.bookid equals b.id where u.username == likeBook.username && u.type==likeBook.type select new { u.username,u.bookid,u.type,u.time,b.book_name,b.author,b.book_image,b.publisher,b.introduction}).ToList();
+            if (result == null)
             {
                 return NotFound();
             }
 
-            return Json(like_book);
+            return Json(result);
         }
 
 

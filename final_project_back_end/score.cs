@@ -16,7 +16,7 @@ namespace final_project_back_end
     {
         public string username { get; set; }
         public int bookid { get; set; }
-        public Nullable<int> score1 { get; set; }
+        public int score1 { get; set; }
 
         [JsonIgnore]
         public virtual book_info book_info { get; set; }
