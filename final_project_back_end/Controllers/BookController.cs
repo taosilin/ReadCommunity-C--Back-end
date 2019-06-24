@@ -12,9 +12,10 @@ using final_project_back_end;
 
 namespace final_project_back_end.Controllers
 {
+
     public class BookController : ApiController
     {
-        private bookEntities db = new bookEntities();
+        private bookEntities1 db = new bookEntities1();
 
         // GET: api/Book
         public IQueryable<book_info> Getbook_info()

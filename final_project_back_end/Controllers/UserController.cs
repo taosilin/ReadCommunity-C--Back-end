@@ -14,7 +14,7 @@ namespace final_project_back_end.Controllers
 {
     public class UserController : ApiController
     {
-        private bookEntities db = new bookEntities();
+        private bookEntities1 db = new bookEntities1();
 
         // GET: api/User
         public IQueryable<user> Getuser()
@@ -23,11 +23,10 @@ namespace final_project_back_end.Controllers
         }
 
         // GET: api/User/5
-        [ResponseType(typeof(user))]
-        public IHttpActionResult Getuser(string username)
+        public IHttpActionResult Getuser(string id)
         {
             bookEntities1 ctx = new bookEntities1();
-            var user = ctx.user.Where(x => x.username == username);
+            var user = ctx.user.Where(x => x.username == id);
             if (user == null)
             {
                 return NotFound();

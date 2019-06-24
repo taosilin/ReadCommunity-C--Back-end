@@ -1,0 +1,113 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+
+namespace final_project_back_end.Controllers
+{
+    public class SearchBook
+    {
+        public string name { get; set; }
+        public int page { get; set; }
+        public int size { get; set; }
+    }
+
+    [Route("BookList")]
+    public class BookListController : ApiController
+    {
+        [Route("BookList/score")]
+        [HttpPost]
+        public IHttpActionResult BookScoreList()
+        {
+            bookEntities1 ctx = new bookEntities1();
+            var book_info = ctx.book_info.OrderByDescending(x => x.score).Take(10).ToList();
+            if (book_info == null)
+            {
+                return NotFound();
+            }
+
+            return Json<List<book_info>>(book_info);
+        }
+
+        [Route("BookList/rating")]
+        [HttpPost]
+        public IHttpActionResult BookRatingList()
+        {
+            bookEntities1 ctx = new bookEntities1();
+            var book_info = ctx.book_info.OrderByDescending(x => x.rating_num).Take(10).ToList();
+            if (book_info == null)
+            {
+                return NotFound();
+            }
+
+            return Json<List<book_info>>(book_info);
+        }
+
+        [Route("BookList/new")]
+        [HttpPost]
+        public IHttpActionResult BookNewList()
+        {
+            bookEntities1 ctx = new bookEntities1();
+            var book_info = ctx.book_info.OrderByDescending(x => x.publish_date).Take(10).ToList();
+            if (book_info == null)
+            {
+                return NotFound();
+            }
+
+            return Json<List<book_info>>(book_info);
+        }
+
+        [Route("BookList/searchName")]
+        [HttpPost]
+        public IHttpActionResult SearchName(SearchBook searchBook)
+        {
+            bookEntities1 ctx = new bookEntities1();
+
+            var book_info = (from b in ctx.book_info where b.book_name.Contains(searchBook.name) select b)
+                .OrderByDescending(x => x.score).Skip(searchBook.page * searchBook.size).Take(searchBook.size).ToList();
+
+            if (book_info == null)
+            {
+                return NotFound();
+            }
+
+            return Json<List<book_info>>(book_info);
+        }
+
+        [Route("BookList/searchAuthor")]
+        [HttpPost]
+        public IHttpActionResult SearchAuthor(SearchBook searchBook)
+        {
+            bookEntities1 ctx = new bookEntities1();
+
+            var book_info = (from b in ctx.book_info where b.author.Contains(searchBook.name) select b)
+                .OrderByDescending(x => x.score).Skip(searchBook.page * searchBook.size).Take(searchBook.size).ToList();
+
+            if (book_info == null)
+            {
+                return NotFound();
+            }
+
+            return Json<List<book_info>>(book_info);
+        }
+
+        [Route("BookList/searchType")]
+        [HttpPost]
+        public IHttpActionResult SearchType(SearchBook searchBook)
+        {
+            bookEntities1 ctx = new bookEntities1();
+
+            var book_info = (from b in ctx.book_info where b.tags.Contains(searchBook.name) select b)
+                .OrderByDescending(x => x.score).Skip(searchBook.page * searchBook.size).Take(searchBook.size).ToList();
+
+            if (book_info == null)
+            {
+                return NotFound();
+            }
+
+            return Json<List<book_info>>(book_info);
+        }
+    }
+}

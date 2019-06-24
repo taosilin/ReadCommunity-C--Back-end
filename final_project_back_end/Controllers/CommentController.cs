@@ -14,7 +14,7 @@ namespace final_project_back_end.Controllers
 {
     public class CommentController : ApiController
     {
-        private bookEntities db = new bookEntities();
+        private bookEntities1 db = new bookEntities1();
 
         // GET: api/Comment
         public IQueryable<comment> Getcomment()
@@ -37,7 +37,7 @@ namespace final_project_back_end.Controllers
 
         public IHttpActionResult GetUsercomment(string username)
         {
-            bookEntities ctx = new bookEntities();
+            bookEntities1 ctx = new bookEntities1();
             var comments = ctx.comment.Where(x => x.user.username == username);
             if (comments == null)
             {

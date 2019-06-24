@@ -186,6 +186,7 @@
       <DependentUpon>Model2.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\BookController.cs" />
+    <Compile Include="Controllers\BookListController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
