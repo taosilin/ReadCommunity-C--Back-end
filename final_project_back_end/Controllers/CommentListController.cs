@@ -11,6 +11,22 @@ namespace final_project_back_end.Controllers
     [Route("CommentList")]
     public class CommentListController : ApiController
     {
+        [Route("CommentList/Add")]
+        [HttpPost]
+        public IHttpActionResult Postcomment(comment comment)
+        {
+            bookEntities1 ctx = new bookEntities1();
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            ctx.comment.Add(comment);
+            ctx.SaveChanges();
+
+            return Json("success");
+        }
+
         [Route("CommentList/Book")]
         [HttpPost]
         public IHttpActionResult BookComment(book_info book)

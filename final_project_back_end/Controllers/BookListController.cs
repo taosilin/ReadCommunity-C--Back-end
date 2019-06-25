@@ -17,6 +17,21 @@ namespace final_project_back_end.Controllers
     [Route("BookList")]
     public class BookListController : ApiController
     {
+        private bookEntities1 db = new bookEntities1();
+
+        [Route("BookList/Detail")]
+        [HttpPost]
+        public IHttpActionResult Getbook_info(book_info b)
+        {
+            var book_info = db.book_info.Where(x => x.id == b.id);
+            if (book_info == null)
+            {
+                return NotFound();
+            }
+
+            return Json(book_info);
+        }
+
         [Route("BookList/score")]
         [HttpPost]
         public IHttpActionResult BookScoreList()

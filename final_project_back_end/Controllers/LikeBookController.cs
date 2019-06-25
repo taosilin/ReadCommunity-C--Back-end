@@ -38,10 +38,8 @@ namespace final_project_back_end.Controllers
             return Json(result);
         }
 
-
-        // POST: api/LikeBook
+        [Route("LikeBook/UserBook")]
         [HttpPost]
-        [ResponseType(typeof(user_book))]
         public IHttpActionResult Postuser_book(user_book user_book)
         {
             bookEntities1 ctx = new bookEntities1();
@@ -70,7 +68,7 @@ namespace final_project_back_end.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = user_book.username }, user_book);
+            return Json("success");
         }
     }
 }
