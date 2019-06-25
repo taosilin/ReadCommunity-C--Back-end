@@ -93,5 +93,31 @@ namespace final_project_back_end.Controllers
 
             return Json<List<book_info>>(book_info);
         }
+
+        [Route("BookList/Recommend")]
+        [HttpPost]
+        public IHttpActionResult Recommend(SearchBook searchBook)
+        {
+            bookEntities1 ctx = new bookEntities1();
+
+            var recommend = (from u in ctx.user_book join b in ctx.book_info on u.bookid equals b.id
+                         where u.username == searchBook.name && u.type == "1"
+                          select new { b.author, b.tags,u.time }).OrderByDescending(u => u.time).Take(1).ToList();
+
+            string author = recommend[0].author;
+            string tags = recommend[0].tags;
+            string[] tag = tags.Split(',');
+            tags = tag[0];
+
+            var book_info = (from b in ctx.book_info where ((b.author.Contains(author)) || (b.tags.Contains(tags))) select b)
+                .OrderByDescending(x => x.score).Skip(searchBook.page * searchBook.size).Take(searchBook.size).ToList();
+
+            if (book_info == null)
+            {
+                return NotFound();
+            }
+
+            return Json<List<book_info>>(book_info);
+        }
     }
 }
