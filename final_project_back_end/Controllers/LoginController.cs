@@ -9,7 +9,7 @@ using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Web.Http.Description;
 using Share;
-using Service;
+using Services;
 namespace final_project_back_end.Controllers
 {
     /*
@@ -26,7 +26,7 @@ namespace final_project_back_end.Controllers
 
         [Route("Login/user")]
         [HttpPost]
-        public IHttpActionResult Login(Service.user userInfo)
+        public IHttpActionResult Login(Services.user userInfo)
         {
             /*
             bookEntities1 ctx = new bookEntities1();

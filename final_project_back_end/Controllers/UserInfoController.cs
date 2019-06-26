@@ -8,7 +8,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using Share;
-using Service;
+using Services;
 namespace final_project_back_end.Controllers
 {
     [Route("UserInfo")]
@@ -20,7 +20,7 @@ namespace final_project_back_end.Controllers
 
         [Route("UserInfo/Detail")]
         [HttpPost]
-        public IHttpActionResult Getuser(Service.user u)
+        public IHttpActionResult Getuser(Services.user u)
         {
             //bookEntities1 ctx = new bookEntities1();
             //var user = ctx.user.Where(x => x.username == u.username);
@@ -35,7 +35,7 @@ namespace final_project_back_end.Controllers
 
         [Route("UserInfo/SignUp")]
         [HttpPost]
-        public IHttpActionResult SignUp(Service.user user)
+        public IHttpActionResult SignUp(Services.user user)
         {
             /*
             if (!ModelState.IsValid)
@@ -77,7 +77,7 @@ namespace final_project_back_end.Controllers
 
         [Route("UserInfo/Update")]
         [HttpPost]
-        public IHttpActionResult Updateuser(Service.user user)
+        public IHttpActionResult Updateuser(Services.user user)
         {
             // bookEntities1 ctx = new bookEntities1();
             /*

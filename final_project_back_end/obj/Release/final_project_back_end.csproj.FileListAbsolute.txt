@@ -105,6 +105,7 @@ C:\Users\taosi\source\repos\ReadCommunity-C--Back-end\final_project_back_end\obj
 C:\Users\taosi\source\repos\ReadCommunity-C--Back-end\final_project_back_end\obj\Release\final_project_back_end.csproj.CopyComplete
 C:\Users\taosi\source\repos\ReadCommunity-C--Back-end\final_project_back_end\obj\Release\final_project_back_end.dll
 C:\Users\taosi\source\repos\ReadCommunity-C--Back-end\final_project_back_end\obj\Release\final_project_back_end.pdb
-C:\Users\taosi\source\repos\ReadCommunity-C--Back-end\final_project_back_end\bin\Service.dll
-C:\Users\taosi\source\repos\ReadCommunity-C--Back-end\final_project_back_end\bin\Service.pdb
-C:\Users\taosi\source\repos\ReadCommunity-C--Back-end\final_project_back_end\bin\Service.dll.config
+C:\Users\taosi\source\repos\ReadCommunity-C--Back-end\final_project_back_end\obj\Release\final_project_back_end.csprojAssemblyReference.cache
+C:\Users\taosi\source\repos\ReadCommunity-C--Back-end\final_project_back_end\bin\Services.dll
+C:\Users\taosi\source\repos\ReadCommunity-C--Back-end\final_project_back_end\bin\Services.pdb
+C:\Users\taosi\source\repos\ReadCommunity-C--Back-end\final_project_back_end\bin\Services.dll.config

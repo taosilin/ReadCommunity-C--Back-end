@@ -5,7 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Threading;
-using Service;
+using Services;
 namespace final_project_back_end.Controllers
 {
     
@@ -17,7 +17,7 @@ namespace final_project_back_end.Controllers
         private CommentService commentService = new CommentService();
         [Route("CommentList/Add")]
         [HttpPost]
-        public IHttpActionResult Postcomment(Service.comment comment)
+        public IHttpActionResult Postcomment(Services.comment comment)
         {
             lock (Lock)
             {
@@ -36,7 +36,7 @@ namespace final_project_back_end.Controllers
 
         [Route("CommentList/Book")]
         [HttpPost]
-        public IHttpActionResult BookComment(Service.book_info book)
+        public IHttpActionResult BookComment(Services.book_info book)
         {
             lock (Lock)
             {
@@ -63,7 +63,7 @@ namespace final_project_back_end.Controllers
 
         [Route("CommentList/Delete")]
         [HttpPost]
-        public IHttpActionResult Deletecomment(Service.comment comment)
+        public IHttpActionResult Deletecomment(Services.comment comment)
         {
             lock (Lock)
             {

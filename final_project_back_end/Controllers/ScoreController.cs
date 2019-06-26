@@ -8,7 +8,7 @@ using System.Web.Http.Description;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
-using Service;
+using Services;
 
 namespace final_project_back_end.Controllers
 {
@@ -31,7 +31,7 @@ namespace final_project_back_end.Controllers
 
         [Route("Score/Add")]
         [HttpPost]
-        public IHttpActionResult Postscore(Service.score score)
+        public IHttpActionResult Postscore(Services.score score)
         {
             lock (Lock)
             {

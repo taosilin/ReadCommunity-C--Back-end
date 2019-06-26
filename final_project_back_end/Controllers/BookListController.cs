@@ -6,7 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Runtime.InteropServices;
 using System.Threading;
-using Service;
+using Services;
 
 namespace final_project_back_end.Controllers
 {
@@ -22,7 +22,7 @@ namespace final_project_back_end.Controllers
     {
         private bookEntities1 db = new bookEntities1();
 
-        private IEnumerable<Service.book_info> list;
+        private IEnumerable<Services.book_info> list;
 
         private BookService bookService = new BookService();
 

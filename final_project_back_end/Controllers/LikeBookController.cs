@@ -8,7 +8,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Web.Http.Description;
-using Service;
+using Services;
 namespace final_project_back_end.Controllers
 {
     [Route("LikeBook")]
@@ -42,7 +42,7 @@ namespace final_project_back_end.Controllers
 
         [Route("LikeBook/UserBook")]
         [HttpPost]
-        public IHttpActionResult Postuser_book(Service.user_book user_book)
+        public IHttpActionResult Postuser_book(Services.user_book user_book)
         {
             /*
             bookEntities1 ctx = new bookEntities1();
