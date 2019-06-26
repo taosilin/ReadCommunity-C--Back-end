@@ -1,0 +1,5 @@
+C:\Users\taosi\source\repos\Share\Share\bin\Debug\Share.dll
+C:\Users\taosi\source\repos\Share\Share\bin\Debug\Share.pdb
+C:\Users\taosi\source\repos\Share\Share\obj\Debug\Share.csproj.CoreCompileInputs.cache
+C:\Users\taosi\source\repos\Share\Share\obj\Debug\Share.dll
+C:\Users\taosi\source\repos\Share\Share\obj\Debug\Share.pdb

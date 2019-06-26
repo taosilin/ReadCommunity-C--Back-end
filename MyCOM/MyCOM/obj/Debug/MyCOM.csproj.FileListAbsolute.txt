@@ -1,0 +1,13 @@
+D:\NET\MyCOM\MyCOM\bin\Debug\MyCOM.dll
+D:\NET\MyCOM\MyCOM\bin\Debug\MyCOM.pdb
+D:\NET\MyCOM\MyCOM\obj\Debug\MyCOM.csproj.CoreCompileInputs.cache
+D:\NET\MyCOM\MyCOM\obj\Debug\MyCOM.dll
+D:\NET\MyCOM\MyCOM\obj\Debug\MyCOM.pdb
+D:\NET\MyCOM\MyCOM\bin\Debug\MyCOM.tlb
+C:\Users\taosi\source\repos\MyCOM\MyCOM\bin\Debug\MyCOM.dll
+C:\Users\taosi\source\repos\MyCOM\MyCOM\bin\Debug\MyCOM.pdb
+C:\Users\taosi\source\repos\MyCOM\MyCOM\obj\Debug\MyCOM.csprojAssemblyReference.cache
+C:\Users\taosi\source\repos\MyCOM\MyCOM\obj\Debug\MyCOM.csproj.CoreCompileInputs.cache
+C:\Users\taosi\source\repos\MyCOM\MyCOM\obj\Debug\MyCOM.dll
+C:\Users\taosi\source\repos\MyCOM\MyCOM\obj\Debug\MyCOM.pdb
+C:\Users\taosi\source\repos\MyCOM\MyCOM\bin\Debug\MyCOM.tlb

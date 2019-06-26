@@ -7,7 +7,8 @@ using System.Web.Http;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
-
+using Share;
+using Service;
 namespace final_project_back_end.Controllers
 {
     [Route("UserInfo")]
@@ -15,12 +16,15 @@ namespace final_project_back_end.Controllers
     {
         private bookEntities1 db = new bookEntities1();
 
+        private UserService userService = new UserService();
+
         [Route("UserInfo/Detail")]
         [HttpPost]
-        public IHttpActionResult Getuser(user u)
+        public IHttpActionResult Getuser(Service.user u)
         {
-            bookEntities1 ctx = new bookEntities1();
-            var user = ctx.user.Where(x => x.username == u.username);
+            //bookEntities1 ctx = new bookEntities1();
+            //var user = ctx.user.Where(x => x.username == u.username);
+            var user = userService.Getuser(u);
             if (user == null)
             {
                 return NotFound();
@@ -31,13 +35,16 @@ namespace final_project_back_end.Controllers
 
         [Route("UserInfo/SignUp")]
         [HttpPost]
-        public IHttpActionResult SignUp(user user)
+        public IHttpActionResult SignUp(Service.user user)
         {
-            // bookEntities1 ctx = new bookEntities1();
+            /*
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+
+            //密码加密
+            user.password = Share.Class1.EncodeBase64(user.password);
 
             db.user.Add(user);
 
@@ -56,15 +63,24 @@ namespace final_project_back_end.Controllers
                     throw;
                 }
             }
-
-            return Json("success");
+            */
+            bool res = userService.SignUp(user);
+            if (res == true)
+            {
+                return Json("success");
+            }
+            else
+            {
+                return Json("error");
+            }
         }
 
         [Route("UserInfo/Update")]
         [HttpPost]
-        public IHttpActionResult Updateuser(user user)
+        public IHttpActionResult Updateuser(Service.user user)
         {
             // bookEntities1 ctx = new bookEntities1();
+            /*
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -80,7 +96,8 @@ namespace final_project_back_end.Controllers
             {
                throw;
             }
-
+            */
+            userService.Updateuser(user);
             return Json("success");
         }
 

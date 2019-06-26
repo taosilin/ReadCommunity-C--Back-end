@@ -8,13 +8,15 @@ using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Web.Http.Description;
-
+using Service;
 namespace final_project_back_end.Controllers
 {
     [Route("LikeBook")]
     public class LikeBookController : ApiController
     {
         private bookEntities1 db = new bookEntities1();
+
+        private UserBookService userBookService = new UserBookService();
 
         public class LikeBook
         {
@@ -40,8 +42,9 @@ namespace final_project_back_end.Controllers
 
         [Route("LikeBook/UserBook")]
         [HttpPost]
-        public IHttpActionResult Postuser_book(user_book user_book)
+        public IHttpActionResult Postuser_book(Service.user_book user_book)
         {
+            /*
             bookEntities1 ctx = new bookEntities1();
             if (!ModelState.IsValid)
             {
@@ -66,9 +69,16 @@ namespace final_project_back_end.Controllers
                 {
                     throw;
                 }
+            }*/
+            bool res = userBookService.Postuser_book(user_book);
+            if (res == true)
+            {
+                return Json("success");
             }
-
-            return Json("success");
+            else
+            {
+                return Json("error");
+            }
         }
     }
 }

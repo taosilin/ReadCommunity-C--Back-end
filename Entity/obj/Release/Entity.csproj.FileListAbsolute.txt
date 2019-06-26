@@ -1,0 +1,15 @@
+C:\Users\taosi\source\repos\ReadCommunity-C--Back-end\Entity\bin\Release\Entity.dll.config
+C:\Users\taosi\source\repos\ReadCommunity-C--Back-end\Entity\bin\Release\Entity.dll
+C:\Users\taosi\source\repos\ReadCommunity-C--Back-end\Entity\bin\Release\Entity.pdb
+C:\Users\taosi\source\repos\ReadCommunity-C--Back-end\Entity\bin\Release\EntityFramework.dll
+C:\Users\taosi\source\repos\ReadCommunity-C--Back-end\Entity\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\taosi\source\repos\ReadCommunity-C--Back-end\Entity\bin\Release\MySql.Data.dll
+C:\Users\taosi\source\repos\ReadCommunity-C--Back-end\Entity\bin\Release\MySql.Data.Entity.EF6.dll
+C:\Users\taosi\source\repos\ReadCommunity-C--Back-end\Entity\bin\Release\EntityFramework.xml
+C:\Users\taosi\source\repos\ReadCommunity-C--Back-end\Entity\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\taosi\source\repos\ReadCommunity-C--Back-end\Entity\bin\Release\zh-Hans\EntityFramework.resources.dll
+C:\Users\taosi\source\repos\ReadCommunity-C--Back-end\Entity\bin\Release\zh-Hans\EntityFramework.SqlServer.resources.dll
+C:\Users\taosi\source\repos\ReadCommunity-C--Back-end\Entity\obj\Release\Entity.csproj.CoreCompileInputs.cache
+C:\Users\taosi\source\repos\ReadCommunity-C--Back-end\Entity\obj\Release\Entity.csproj.CopyComplete
+C:\Users\taosi\source\repos\ReadCommunity-C--Back-end\Entity\obj\Release\Entity.dll
+C:\Users\taosi\source\repos\ReadCommunity-C--Back-end\Entity\obj\Release\Entity.pdb

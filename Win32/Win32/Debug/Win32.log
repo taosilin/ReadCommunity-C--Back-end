@@ -1,0 +1,7 @@
+﻿  stdafx.cpp
+  dllmain.cpp
+  Win32.cpp
+c:\users\taosi\source\repos\win32\win32\win32.cpp(18): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+  正在生成代码...
+    正在创建库 C:\Users\taosi\source\repos\Win32\Debug\Win32.lib 和对象 C:\Users\taosi\source\repos\Win32\Debug\Win32.exp
+  Win32.vcxproj -> C:\Users\taosi\source\repos\Win32\Debug\Win32.dll

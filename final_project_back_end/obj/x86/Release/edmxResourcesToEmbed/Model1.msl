@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="bookModelStoreContainer" CdmEntityContainer="bookEntities">
+    <EntitySetMapping Name="book_info">
+      <EntityTypeMapping TypeName="bookModel.book_info">
+        <MappingFragment StoreEntitySet="book_info">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="book_name" ColumnName="book_name" />
+          <ScalarProperty Name="author" ColumnName="author" />
+          <ScalarProperty Name="publisher" ColumnName="publisher" />
+          <ScalarProperty Name="translator" ColumnName="translator" />
+          <ScalarProperty Name="publish_date" ColumnName="publish_date" />
+          <ScalarProperty Name="page_num" ColumnName="page_num" />
+          <ScalarProperty Name="isbn" ColumnName="isbn" />
+          <ScalarProperty Name="score" ColumnName="score" />
+          <ScalarProperty Name="rating_num" ColumnName="rating_num" />
+          <ScalarProperty Name="book_image" ColumnName="book_image" />
+          <ScalarProperty Name="introduction" ColumnName="introduction" />
+          <ScalarProperty Name="tags" ColumnName="tags" />
+          <ScalarProperty Name="author_info" ColumnName="author_info" />
+          <ScalarProperty Name="producer" ColumnName="producer" />
+          <ScalarProperty Name="original_name" ColumnName="original_name" />
+          <ScalarProperty Name="binding" ColumnName="binding" />
+          <ScalarProperty Name="subtitle" ColumnName="subtitle" />
+          <ScalarProperty Name="series" ColumnName="series" />
+          <ScalarProperty Name="star1" ColumnName="star1" />
+          <ScalarProperty Name="star2" ColumnName="star2" />
+          <ScalarProperty Name="star3" ColumnName="star3" />
+          <ScalarProperty Name="star4" ColumnName="star4" />
+          <ScalarProperty Name="star5" ColumnName="star5" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="comment">
+      <EntityTypeMapping TypeName="bookModel.comment">
+        <MappingFragment StoreEntitySet="comment">
+          <ScalarProperty Name="commentid" ColumnName="commentid" />
+          <ScalarProperty Name="content" ColumnName="content" />
+          <ScalarProperty Name="commenttime" ColumnName="commenttime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="score">
+      <EntityTypeMapping TypeName="bookModel.score">
+        <MappingFragment StoreEntitySet="score">
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="bookid" ColumnName="bookid" />
+          <ScalarProperty Name="score1" ColumnName="score" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tag_info">
+      <EntityTypeMapping TypeName="bookModel.tag_info">
+        <MappingFragment StoreEntitySet="tag_info">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="page" ColumnName="page" />
+          <ScalarProperty Name="is_end" ColumnName="is_end" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="user">
+      <EntityTypeMapping TypeName="bookModel.user">
+        <MappingFragment StoreEntitySet="user">
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="nickname" ColumnName="nickname" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="birthday" ColumnName="birthday" />
+          <ScalarProperty Name="introduction" ColumnName="introduction" />
+          <ScalarProperty Name="headShot" ColumnName="headShot" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="user_book">
+      <EntityTypeMapping TypeName="bookModel.user_book">
+        <MappingFragment StoreEntitySet="user_book">
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="bookid" ColumnName="bookid" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="time" ColumnName="time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="bookid1" TypeName="bookModel.bookid1" StoreEntitySet="comment">
+      <EndProperty Name="book_info">
+        <ScalarProperty Name="id" ColumnName="bookid" />
+      </EndProperty>
+      <EndProperty Name="comment">
+        <ScalarProperty Name="commentid" ColumnName="commentid" />
+      </EndProperty>
+      <Condition IsNull="false" ColumnName="bookid" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="username1" TypeName="bookModel.username1" StoreEntitySet="comment">
+      <EndProperty Name="user">
+        <ScalarProperty Name="username" ColumnName="username" />
+      </EndProperty>
+      <EndProperty Name="comment">
+        <ScalarProperty Name="commentid" ColumnName="commentid" />
+      </EndProperty>
+      <Condition IsNull="false" ColumnName="username" />
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
